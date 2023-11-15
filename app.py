@@ -5,9 +5,6 @@ import os
 
 app = Flask(__name__)  # передаёт сам файл в котором мы всё это делаем
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(
-# os.path.abspath(os.path.dirname('pythonProject8')), 'dpd_test.db')
 db = SQLAlchemy(app)  # создаём объект на основе класса скьюэл алхимия и передаём туда объект нашего фласка
 
 
@@ -95,7 +92,7 @@ def create_article():
         return render_template("create-article.html")  # для публикации статьи
 
 
-@app.route('/user/<string:name>/<int:id>')  # создаём главную страничку через декоратор
+@app.route('/user/<string:name>/<int:id>')  # создаём страничку через декоратор
 def user(name, id):
     return "User page: " + name + " -- " + str(id)
 
